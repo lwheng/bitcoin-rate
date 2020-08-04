@@ -1,6 +1,8 @@
 module Main where
 
-import Lib
+import qualified Lib as L
 
 main :: IO ()
-main = someFunc
+main = do
+  res <- L.fetchJSON
+  print res

@@ -1,6 +1,5 @@
-module Lib
-    ( someFunc
-    ) where
+module Lib (
+  R.fetchJSON
+) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+import qualified Request as R
