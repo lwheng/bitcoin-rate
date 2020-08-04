@@ -1,0 +1,62 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: ebd83475cdbbb34dd8e97ccd32b9a5ae719abdaae38e8f373e7873afdc320c9a
+
+name:           bitcoin-rate
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/lwheng/bitcoin-rate#readme>
+homepage:       https://github.com/lwheng/bitcoin-rate#readme
+bug-reports:    https://github.com/lwheng/bitcoin-rate/issues
+author:         Heng Low Wee
+maintainer:     alpha116@gmail.com
+copyright:      2020 Heng Low Wee
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/lwheng/bitcoin-rate
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_bitcoin_rate
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable bitcoin-rate-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_bitcoin_rate
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bitcoin-rate
+  default-language: Haskell2010
+
+test-suite bitcoin-rate-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_bitcoin_rate
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bitcoin-rate
+  default-language: Haskell2010
