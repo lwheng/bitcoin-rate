@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: bafbb1a5a99a21f8295f2789834f49e4604851a6c14ff1942b0e85f8ee4330b6
+-- hash: c15750229eff1785b0d458ff6529ca109d72d3151e8f3d232628cfdd6ed90ce8
 
 name:           bitcoin-rate
 version:        0.1.0.0
@@ -28,6 +28,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Parse
       Request
   other-modules:
       Paths_bitcoin_rate
