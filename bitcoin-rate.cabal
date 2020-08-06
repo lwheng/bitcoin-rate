@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 26bce84f3327c76dd5cbaaf370551d9a0f677b8bda9c180550e238b122d9e188
+-- hash: 21201a1df54d224f3643bc065dea035df0795798e3362b340c337b8d7fd5e934
 
 name:           bitcoin-rate
 version:        0.1.0.0
@@ -28,6 +28,7 @@ source-repository head
 library
   exposed-modules:
       Parse
+      Rate
       Request
   other-modules:
       Paths_bitcoin_rate
@@ -50,11 +51,10 @@ library
 executable bitcoin-rate-exe
   main-is: Main.hs
   other-modules:
-      Main2
       Paths_bitcoin_rate
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall
   build-depends:
       base >=4.7 && <5
     , bitcoin-rate
@@ -77,7 +77,7 @@ test-suite bitcoin-rate-test
       Paths_bitcoin_rate
   hs-source-dirs:
       test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall
   build-depends:
       base >=4.7 && <5
     , bitcoin-rate

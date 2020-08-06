@@ -1,13 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Main2 where
+module Rate where
 
-import qualified Data.Text.IO as TIO
+import           Data.Text (Text)
 import qualified Parse as P
 import qualified Request as R
 
-main :: IO ()
-main = do
+rate :: IO Text
+rate = do
   json <- R.fetchJSON
 
   let
@@ -19,7 +19,7 @@ main = do
                    Nothing      -> "Currently"
 
     strOutput = case maybeRate of
-                  Just rate -> strUpdated <> ", the Bitcoin rate is USD " <> rate
-                  Nothing   -> "Could not find the Bitcoin rate :("
+                  Just r  -> strUpdated <> ", the Bitcoin rate is USD " <> r
+                  Nothing -> "Could not find the Bitcoin rate :("
 
-  TIO.putStrLn strOutput
+  return strOutput
