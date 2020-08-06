@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c15750229eff1785b0d458ff6529ca109d72d3151e8f3d232628cfdd6ed90ce8
+-- hash: 26bce84f3327c76dd5cbaaf370551d9a0f677b8bda9c180550e238b122d9e188
 
 name:           bitcoin-rate
 version:        0.1.0.0
@@ -27,7 +27,6 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
       Parse
       Request
   other-modules:
@@ -36,16 +35,22 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , blaze-builder
     , bytestring
     , http-conduit
+    , http-types
     , lens
     , lens-aeson
     , text
+    , utf8-string
+    , wai
+    , warp
   default-language: Haskell2010
 
 executable bitcoin-rate-exe
   main-is: Main.hs
   other-modules:
+      Main2
       Paths_bitcoin_rate
   hs-source-dirs:
       app
@@ -53,11 +58,16 @@ executable bitcoin-rate-exe
   build-depends:
       base >=4.7 && <5
     , bitcoin-rate
+    , blaze-builder
     , bytestring
     , http-conduit
+    , http-types
     , lens
     , lens-aeson
     , text
+    , utf8-string
+    , wai
+    , warp
   default-language: Haskell2010
 
 test-suite bitcoin-rate-test
@@ -71,9 +81,14 @@ test-suite bitcoin-rate-test
   build-depends:
       base >=4.7 && <5
     , bitcoin-rate
+    , blaze-builder
     , bytestring
     , http-conduit
+    , http-types
     , lens
     , lens-aeson
     , text
+    , utf8-string
+    , wai
+    , warp
   default-language: Haskell2010

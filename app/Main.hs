@@ -1,25 +1,25 @@
 {-# LANGUAGE OverloadedStrings #-}
-
-module Main where
-
-import qualified Data.Text.IO as TIO
-import qualified Parse as P
-import qualified Request as R
-
-main :: IO ()
+ 
+import           Blaze.ByteString.Builder (copyByteString)
+import           Data.Monoid
+import           Network.HTTP.Types (status200)
+import           Network.Wai
+import           Network.Wai.Handler.Warp
+import qualified Data.ByteString.UTF8 as BU
+ 
 main = do
-  json <- R.fetchJSON
-
-  let
-    maybeRate    = P.getRate    json
-    maybeUpdated = P.getUpdated json
-
-    strUpdated = case maybeUpdated of
-                   Just updated -> "As of " <> updated
-                   Nothing      -> "Currently"
-
-    strOutput = case maybeRate of
-                  Just rate -> strUpdated <> ", the Bitcoin rate is USD " <> rate
-                  Nothing   -> "Could not find the Bitcoin rate :("
-
-  TIO.putStrLn strOutput
+    let port = 3000
+    putStrLn $ "Listening on port " ++ show port
+    run port app
+ 
+app req respond = respond $
+    case pathInfo req of
+        ["yay"] -> yay
+        x -> index x
+ 
+yay = responseBuilder status200 [ ("Content-Type", "text/plain") ] $ mconcat $ map copyByteString
+    [ "yay" ]
+ 
+index x = responseBuilder status200 [("Content-Type", "text/html")] $ mconcat $ map copyByteString
+    [ "<p>Hello from ", BU.fromString $ show x, "!</p>"
+    , "<p><a href='/yay'>yay</a></p>\n" ]

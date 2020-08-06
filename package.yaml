@@ -26,6 +26,11 @@ dependencies:
 - bytestring
 - text
 - http-conduit
+- blaze-builder
+- http-types
+- utf8-string
+- wai
+- warp
 
 library:
   source-dirs: src
