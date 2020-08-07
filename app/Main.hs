@@ -37,7 +37,7 @@ bitcoinRate
 bitcoinRate txt =
   responseBuilder
     status200
-    [ ("Content-Type", "text/plain") ]
+    [ ("Content-Type", "text/plain"), ("Access-Control-Allow-Origin", "*") ]
     $ mconcat $ map copyByteString [ Encoding.encodeUtf8 txt ]
 
 unsupportedPath
