@@ -5332,11 +5332,19 @@ var $elm$core$Task$perform = F2(
 			$elm$core$Task$Perform(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
-var $elm$browser$Browser$element = _Browser_element;
+var $elm$browser$Browser$application = _Browser_application;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$Main$init = function (_v0) {
-	return _Utils_Tuple2('Please click Reload', $elm$core$Platform$Cmd$none);
+var $author$project$Main$init = F3(
+	function (_v0, _v1, _v2) {
+		return _Utils_Tuple2('Please click Reload', $elm$core$Platform$Cmd$none);
+	});
+var $author$project$Main$Reload = {$: 'Reload'};
+var $author$project$Main$onUrlChange = function (_v0) {
+	return $author$project$Main$Reload;
+};
+var $author$project$Main$onUrlRequest = function (_v0) {
+	return $author$project$Main$Reload;
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
@@ -6147,7 +6155,6 @@ var $author$project$Main$update = F2(
 			}
 		}
 	});
-var $author$project$Main$Reload = {$: 'Reload'};
 var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
@@ -6170,10 +6177,8 @@ var $elm$html$Html$Events$onClick = function (msg) {
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$view = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
+	return {
+		body: _List_fromArray(
 			[
 				A2(
 				$elm$html$Html$div,
@@ -6192,10 +6197,12 @@ var $author$project$Main$view = function (model) {
 					[
 						$elm$html$Html$text('Reload')
 					]))
-			]));
+			]),
+		title: 'Sample'
+	};
 };
-var $author$project$Main$main = $elm$browser$Browser$element(
-	{init: $author$project$Main$init, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
+var $author$project$Main$main = $elm$browser$Browser$application(
+	{init: $author$project$Main$init, onUrlChange: $author$project$Main$onUrlChange, onUrlRequest: $author$project$Main$onUrlRequest, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
 
