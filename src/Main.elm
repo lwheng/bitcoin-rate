@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Main exposing (..)
 
 import Bootstrap.Button as Button
 import Bootstrap.CDN as CDN
@@ -14,7 +14,7 @@ import Http as Http
 import String as String
 import Url as Url
 
-
+main : Program () Model Msg
 main =
     Browser.application
         { init = init
